@@ -1,0 +1,65 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "01c569c5a37688218f3428c2aed40621",
+    "packages": [
+        {
+            "name": "dickinsonjl/lorum",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dickinsonjl/lorum.git",
+                "reference": "7a1028c904a865b345ea52822a835fd6dbc256c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dickinsonjl/lorum/zipball/7a1028c904a865b345ea52822a835fd6dbc256c0",
+                "reference": "7a1028c904a865b345ea52822a835fd6dbc256c0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.0.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dickinsonjl\\Lorum\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "John Dickinson",
+                    "email": "john.dickinson@enta.net"
+                }
+            ],
+            "description": "Lorem ipsum dolor sit amet",
+            "keywords": [
+                "lorem ipsum dolor sit amet"
+            ],
+            "support": {
+                "issues": "https://github.com/dickinsonjl/lorum/issues",
+                "source": "https://github.com/dickinsonjl/lorum/tree/master"
+            },
+            "time": "2017-09-01T10:31:19+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
+}
