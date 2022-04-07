@@ -1,9 +1,7 @@
 <?php
 defined("_JEXEC") or die("Acceso restringido");
 
-$temp = __DIR__ . DIRECTORY_SEPARATOR ."vendor" . DIRECTORY_SEPARATOR . "autoload.php";
-
-require_once $temp;
+require_once __DIR__ . "/vendor/autoload.php";
 
 use Dickinsonjl\Lorum\Lorum;
 
@@ -17,36 +15,44 @@ class plgContentPluginBase extends JPlugin{
 
         $patron = '/(\{plugin_base\})(.*)(\{\/plugin_base\})/';
 
-        $match = $this->getContenido($articulo->text, $patron);
-        if($match && $this->isJSON($match)){
-            $reemplazo = $this->getTextoDeReemplazo(json_decode($match)->index);
-            $articulo->text = $this->reemplazaContenido($articulo->text, $patron, $reemplazo);
-        }
-        else{
-            $articulo->text = $this->reemplazaContenido($articulo->text, $patron, "");
-        }
+        $this->procesarTexto($articulo->text, $patron);
 
-        $match = $this->getContenido($articulo->introtext, $patron);
-        if($match && $this->isJSON($match)){
-            $reemplazo = $this->getTextoDeReemplazo(json_decode($match)->index);
-            $articulo->introtext = $this->reemplazaContenido($articulo->introtext, $patron, $reemplazo);
-        }
-        else{
-            $articulo->introtext = $this->reemplazaContenido($articulo->introtext, $patron, "");
-        }
-
-        // $articulo->text=str_replace("{plugin_ejemplo}{/plugin_ejemplo}",$this->reemplazaContenido($articulo),$articulo->text);
-        // $articulo->introtext=str_replace("{plugin_ejemplo}{/plugin_ejemplo}",$this->reemplazaContenido($articulo),$articulo->introtext);
-        
+        $this->procesarTexto($articulo->introtext, $patron);
+    
         return true;
     }
 
-    private function getContenido($text,$patron){
-        $matches = [];
-        preg_match($patron, $text, $matches);
+    private function procesarTexto(&$text,$patron){
+        $tags = $this->getContenido($text, $patron);
 
+        foreach ($tags as $tag) {
+            if($this->isJSON($tag["content"])){
+                $reemplazo = $this->getTextoDeReemplazo(json_decode($tag["content"])->index);
+                
+                $text = $this->reemplazaContenido($text, $tag["tag"], $reemplazo);
+            }
+            else{
+                $text = $this->reemplazaContenido($text, $patron, "");
+            }
+        }
+    }
+
+
+    private function getContenido($text,$patron){
+        $out = [];
+        $matches = [];
+        preg_match_all($patron, $text, $matches);
+        
         if(count($matches) == 4){
-            return $matches[2];
+            
+            //Existen matches
+            for($i = 0; $i < count($matches[0]); $i++){
+                $tag["tag"] = $matches[0][$i];
+                $tag["content"] = $matches[2][$i];
+                
+                array_push($out,$tag);
+            }   
+            return $out;
         }
         else{
             return false;
@@ -58,22 +64,27 @@ class plgContentPluginBase extends JPlugin{
     }
 
     private function reemplazaContenido($text,$patron,$reemplazo){
-        $out = preg_replace($patron, $reemplazo, $text);
+        $out = str_replace($patron, $reemplazo, $text);
 
         return $out;
     }
 
     private function getTextoDeReemplazo($index){
+        // die(var_dump($index));
         switch($index){
             case "test":
-                return "<span>FUNCIONAAA!!!!</span>";
+                $out = "<span>FUNCIONAAAA!!!!</span>";
+                break;
             case "test-2":
                 $lorum = new Lorum();
                 return "<span>" . $lorum->giveMeSentence(2) . "</span>";
-                return "<span>FUNCIONAAA2!!!!</span>";
+                // $out = "<span>FUNCIONAAA2!!!!</span>";
+                break;
             default:
-                return "";
+                $out = "";
         }
+
+        return $out;
     }
 }
 
