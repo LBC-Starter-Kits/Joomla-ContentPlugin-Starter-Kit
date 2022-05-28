@@ -58,3 +58,38 @@ $breakpoints: (
       }
   }
 }
+
+/*
+Uso: 
+
+// $color-primary: #3e60be;
+// $color-secondary: #23ded2;
+// $color-accent: #e5389b;
+// $color-neutral-light: #efefef;
+// $color-neutral-dark: #323232;
+
+// $simple-gradient: $color-primary, $color-secondary;
+// $complex-gradient: $color-primary, $color-secondary, $color-accent;
+
+// $scheme-default: $color-neutral-light, $color-primary;
+// $scheme-secondary: $color-neutral-dark, $color-secondary;
+// $scheme-accent-gradient: $color-neutral-dark, $complex-gradient;
+// $scheme-simple-gradient: $color-neutral-dark, $simple-gradient;
+
+
+@include color-scheme(yellow,black);
+@include color-scheme($scheme-default...);
+@include color-scheme($scheme-accent-gradient...);
+@include color-scheme($scheme-simple-gradient...);
+@include color-scheme(black, (white, black, yellow));
+
+*/
+@mixin color-scheme($texto, $bg){
+  @if list.length($bg) == 1{
+    background-color: $bg;
+  }
+  @else{
+    background-image: linear-gradient(to top left, $bg);
+  }
+  color: $texto;
+}
