@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Luinux81/joomla-contentplugin-base.git"
+    "url": "git+https://github.com/LBC-Starter-Kits/Joomla-ContentPlugin-Starter-Kit.git"
   },
   "author": "Luis Breña Calvo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Luinux81/joomla-contentplugin-base/issues"
+    "url": "https://github.com/LBC-Starter-Kits/Joomla-ContentPlugin-Starter-Kit/issues"
   },
-  "homepage": "https://github.com/Luinux81/joomla-contentplugin-base#readme",
+  "homepage": "https://github.com/LBC-Starter-Kits/Joomla-ContentPlugin-Starter-Kit#readme",
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/polyfill": "^7.10.1",
