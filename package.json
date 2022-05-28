@@ -4,7 +4,6 @@
   "description": "Plugin de contenido Base para Joomla 3.x y 4.x",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js"
   },
   "repository": {
