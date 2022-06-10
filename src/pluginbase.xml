@@ -10,7 +10,8 @@
     <description>Plugin de contenido base</description>
     <files>
         <filename plugin="pluginbase">pluginbase.php</filename>
-        <filename>index.html</filename>     
+        <filename>index.html</filename>  
+        <folder>vendor</folder>   
         <folder>css</folder>
         <folder>js</folder>   
     </files>
