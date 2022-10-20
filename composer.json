@@ -1,5 +1,9 @@
 {
-    "require": {
-        "dickinsonjl/lorum": "^1.0"
-    }
+    "name": "lbc/joomla/plugin-base",
+    "authors": [
+        {
+            "name": "Luis BC",
+            "email": "luinux81@gmail.com"
+        }
+    ]
 }

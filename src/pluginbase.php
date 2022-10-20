@@ -1,9 +1,8 @@
 <?php
 defined("_JEXEC") or die("Acceso restringido");
 
-require_once __DIR__ . "/vendor/autoload.php";
+require_once __DIR__ . DIRECTORY_SEPARATOR ."vendor" . DIRECTORY_SEPARATOR . "autoload.php";
 
-use Dickinsonjl\Lorum\Lorum;
 
 class plgContentPluginBase extends JPlugin{
 
